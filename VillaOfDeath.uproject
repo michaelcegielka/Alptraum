@@ -49,6 +49,10 @@
 		{
 			"Name": "GPULightmass",
 			"Enabled": true
+		},
+		{
+			"Name": "DazToUnreal",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
