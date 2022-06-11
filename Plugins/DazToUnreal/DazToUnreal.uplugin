@@ -1,16 +1,16 @@
 {
 	"FileVersion": 3,
-	"Version": 4,
-	"VersionName": "4.2.0",
+	"Version": 5,
+	"VersionName": "5.0.0",
 	"FriendlyName": "DazToUnreal",
 	"Description": "",
-	"Category": "Importers",
-	"CreatedBy": "Daz 3D",
-	"CreatedByURL": "http://www.daz3d.com/daz-to-unreal-bridge",
-	"DocsURL": "http://docs.daz3d.com/doku.php/public/read_me/index/72003/start",
-	"MarketplaceURL": "",
-	"SupportURL": "https://www.daz3d.com/help/",
-	"EngineVersion": "4.26",
+	"Category": "Other",
+	"CreatedBy": "Daz 3D, Inc",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/070a312bc04c48bcb1a4d193aaddf73e",
+	"SupportURL": "",
+	"EngineVersion": "4.26.0",
 	"CanContainContent": true,
 	"Installed": true,
 	"Modules": [
@@ -19,7 +19,8 @@
 			"Type": "Editor",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
-				"Win64"
+				"Win64",
+				"Mac"
 			]
 		},
 		{
@@ -27,7 +28,8 @@
 			"Type": "UncookedOnly",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
-				"Win64"
+				"Win64",
+				"Mac"
 			]
 		},
 		{
@@ -35,7 +37,8 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
-				"Win64"
+				"Win64",
+				"Mac"
 			]
 		}
 	],

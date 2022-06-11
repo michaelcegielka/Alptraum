@@ -24,10 +24,20 @@ enum DazAssetType
 	Pose
 };
 
+struct TextureLookupInfo
+{
+	FString sSourceFullPath;
+	bool bIsCutOut;
+};
 
 class FDazToUnrealModule : public IModuleInterface
 {
 public:
+	static int BatchConversionMode;
+	static FString BatchConversionDestPath;
+	static TMap<FString, FString> AssetIDLookup;
+	TMap<FString, TextureLookupInfo> m_sourceTextureLookupTable;
+	TMap<FString, TextureLookupInfo> m_targetTextureLookupTable;
 
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
@@ -79,7 +89,11 @@ private:
 	FTickerDelegate TickDelegate;
 
 	/** DelegateHandle for the tick function*/
+#if ENGINE_MAJOR_VERSION > 4
+	FTSTicker::FDelegateHandle TickDelegateHandle;
+#else
 	FDelegateHandle TickDelegateHandle;
+#endif
 
 	/** Tick function for handling incomming messages from Daz3D*/
 	bool Tick(float DeltaTime);
@@ -88,14 +102,11 @@ private:
 
 private:
 
-	/** Helper function to create a directory and return true if the directory exists*/
-	bool MakeDirectoryAndCheck(FString& Directory);
-
 	/** Imports the textures for the model*/
 	bool ImportTextureAssets(TArray<FString>& SourcePaths, FString& ImportLocation);
 
 	/** Imports the modified FBX file*/
-	UObject* ImportFBXAsset(const FString& SourcePath, const FString& ImportLocation, const DazAssetType& AssetType, const DazCharacterType& CharacterType, const FString& CharacterTypeName);
+	UObject* ImportFBXAsset(const FString& SourcePath, const FString& ImportLocation, const DazAssetType& AssetType, const DazCharacterType& CharacterType, const FString& CharacterTypeName, const bool bSetPostProcessAnimation);
 
 	/** Function for creating the Material Instances for the model*/
 	//bool CreateMaterials(const FString CharacterMaterialFolder, const FString CharacterTexturesFolder, const TArray<FString>& MaterialNames, TMap<FString, TArray<FDUFTextureProperty>> MaterialProperties, const DazCharacterType CharacterType);
